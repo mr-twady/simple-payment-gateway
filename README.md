@@ -82,29 +82,15 @@ These instructions will help you set up the project locally for development and 
     http://localhost:8080/docs
 
 10. **Example API usage**
-    - Deposit Funds (Initiate)
-    - POST /api/deposit
-        - Request body
-        ```
-            {
-                "type": "deposit",
-                "amount": 10,
-                "currency": "USD",
-                "customerReference": "abd1qas0dd1",
-                "email": "test@test.com"
-            }
-        ```
+    - Health check 
+    - GET /health
         - Response body
         ```
-            {
-                "type": "deposit",
-                "amount": 10,
-                "currency": "USD",
-                "status": "processing",
-                "customer_reference": "abd1qas0dd1",
-                "email": "test@test.com"
+           {
+                "message": "Payment service is up and running!"
             }
         ```
+
 
     - Deposit Funds (Initiate)
     - POST /api/deposit
@@ -147,6 +133,22 @@ These instructions will help you set up the project locally for development and 
                 "status": "processing",
                 "customer_reference": "abd1qas0dd1",
                 "email": "test@test.com"
+            }
+        ```
+
+    - Callback (Confirm a deposit transaction)
+    - POST /api/callback
+        - Request body
+        ```
+            {
+                "customerReference": "abc455456",
+                "status": "completed"
+            }
+        ```
+        - Response body
+        ```
+            {
+                "status":"completed"
             }
         ```
 
