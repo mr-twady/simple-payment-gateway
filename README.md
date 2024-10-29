@@ -84,6 +84,7 @@ These instructions will help you set up the project locally for development and 
 # Directory Structure
 High level overview of project structure
 
+```
 dunsin-olubobokun/simple-payment-gateway/
 ├── main/                    # Main entry point for the application
 ├── internal/                # Internal application logic
