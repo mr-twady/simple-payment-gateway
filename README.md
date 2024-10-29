@@ -113,7 +113,6 @@ dunsin-olubobokun/simple-payment-gateway/
     - Deposit Funds (Initiate)
     - POST /api/deposit
         - Request body
-        ```
             {
                 "type": "deposit",
                 "amount": 10,
@@ -121,9 +120,7 @@ dunsin-olubobokun/simple-payment-gateway/
                 "customerReference": "abd1qas0dd1",
                 "email": "test@test.com"
             }
-        ```
         - Response body
-        ```
             {
                 "type": "deposit",
                 "amount": 10,
@@ -132,18 +129,15 @@ dunsin-olubobokun/simple-payment-gateway/
                 "customer_reference": "abd1qas0dd1",
                 "email": "test@test.com"
             }
-        ```
 
     - Verify Deposit
     - POST api/deposit/verify
         - Request body
-        ```
             {
                 "customerReference": "abd1qas0dd1"
             }
-        ```
+        
         - Response body
-        ```
             {
                 "type": "deposit",
                 "amount": 10,
@@ -152,28 +146,22 @@ dunsin-olubobokun/simple-payment-gateway/
                 "customer_reference": "abd1qas0dd1",
                 "email": "test@test.com"
             }
-        ```
 
     - Callback (Confirm a deposit transaction)
     - POST /api/callback
         - Request body
-        ```
             {
                 "customerReference": "abc455456",
                 "status": "completed"
             }
-        ```
         - Response body
-        ```
             {
                 "status":"completed"
             }
-        ```
 
     - Withdraw Funds 
     - POST /api/withdrawal
         - Request body
-        ```
             {
                 "type": "withdrawal",
                 "amount": 50.0,
@@ -181,9 +169,7 @@ dunsin-olubobokun/simple-payment-gateway/
                 "customerReference": "dsdsds999zsds",
                 "email": "test@test.com"
             }
-        ```
         - Response body
-        ```
             {
                 "type": "withdrawal",
                 "amount": 50,
@@ -192,22 +178,17 @@ dunsin-olubobokun/simple-payment-gateway/
                 "customer_reference": "dsdsds999zsds",
                 "email": "test@test.com"
             }
-        ```
 
     - Get user balance  
     - GET /api/user/balance?email=
         - Request param
-        ```
             {
                 "email": "test@test.com"
             }
-        ```
         - Response body
-        ```
             {
                 "balance":500
             }
-        ```
    
 # Testing
     ```
