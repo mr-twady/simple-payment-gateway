@@ -1,0 +1,214 @@
+openapi: 3.0.0
+info:
+  title: Payment Gateway API
+  description: API for processing payment transactions - Deposit (Cash-in) and Withdrawal (Cash-out).
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /health:
+    get:
+      summary: Health Check
+      description: Returns the health status of the service.
+      responses:
+        '200':
+          description: Service is healthy.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "ok"
+
+  /api/deposit:
+    post:
+      summary: Initiate a Deposit
+      description: Allows a user to deposit funds.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_reference:
+                  type: string
+                amount:
+                  type: number
+                  format: float
+                currency:
+                  type: string
+                email:
+                  type: string
+                type:
+                  type: string
+              required:
+                - customer_reference
+                - amount
+                - currency
+                - type
+                - email
+      responses:
+        '200':
+          description: Deposit initiated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction_id:
+                    type: string
+                    example: "12345"
+                  status:
+                    type: string
+                    example: "processing"
+        '400':
+          description: Invalid input.
+        '500':
+          description: Internal server error.
+
+  /api/deposit/verify:
+    post:
+      summary: Verify Deposit
+      description: Verify the status of a deposit.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_reference:
+                  type: string
+                status:
+                  type: string
+              required:
+                - customer_reference
+                - status
+      responses:
+        '200':
+          description: Verification successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "completed"
+        '404':
+          description: Transaction not found.
+        '400':
+          description: Invalid input.
+        '500':
+          description: Internal server error.
+
+  /api/withdrawal:
+    post:
+      summary: Initiate a Withdrawal
+      description: Allows a user to withdraw funds.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_reference:
+                  type: string
+                amount:
+                  type: number
+                  format: float
+                currency:
+                  type: string
+                email:
+                  type: string
+                type:
+                  type: string
+                
+              required:
+                 - customer_reference
+                - amount
+                - currency
+                - type
+                - email
+      responses:
+        '200':
+          description: Withdrawal processed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customer_reference:
+                    type: string
+                    example: "abc67890"
+                  status:
+                    type: string
+                    example: "completed"
+        '400':
+          description: Invalid input.
+        '500':
+          description: Internal server error.
+
+  /api/callback:
+    post:
+      summary: Handle Callback
+      description: Processes callback data from payment gateways.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_reference:
+                  type: string
+                status:
+                  type: string
+              required:
+                - customer_reference
+                - status
+      responses:
+        '200':
+          description: Callback processed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "completed"
+        '400':
+          description: Invalid callback data.
+        '500':
+          description: Internal server error.
+
+  /api/user/balance:
+    get:
+      summary: User balance 
+      description: Retrieves user's balance.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+        param:
+          required:
+            - email
+      responses:
+        '200':
+          description: User balance retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request data.
+        '500':
+          description: Internal server error.
+
