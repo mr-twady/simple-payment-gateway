@@ -1,12 +1,14 @@
 package api
 
 import (
+	"dunsin-olubobokun/simple-payment-gateway/internal/models"
 	"encoding/json"
 	"net/http"
-
-	"dunsin-olubobokun/simple-payment-gateway/internal/models"
 )
 
+// COULD IMPROVE: if there was more time, there are definitely other polished alternatives to handle request validation
+
+// Simple reusable validator I'm using to validate the request method and decode the transaction request
 func ValidateTransactionRequest(w http.ResponseWriter, r *http.Request) (*models.TransactionRequest, error) {
 	// since all relevant apis makes use of POST http request method
 	if r.Method != http.MethodPost {

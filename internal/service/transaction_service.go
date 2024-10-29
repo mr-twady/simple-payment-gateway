@@ -10,12 +10,13 @@ import (
 
 type TransactionService struct {
 	Repo     *repository.TransactionRepository
+	UserRepo *repository.UserRepository
 	Gateways map[string]gateways.PaymentGateway
 	cb       *gobreaker.CircuitBreaker
 }
 
 // NewTransactionService initializes the TransactionService with a circuit breaker
-func NewTransactionService(repo *repository.TransactionRepository, gateways map[string]gateways.PaymentGateway) *TransactionService {
+func NewTransactionService(repo *repository.TransactionRepository, userRepo *repository.UserRepository, gateways map[string]gateways.PaymentGateway) *TransactionService {
 	settings := gobreaker.Settings{
 		Name:        "PaymentGateway",
 		MaxRequests: 1,
@@ -24,5 +25,5 @@ func NewTransactionService(repo *repository.TransactionRepository, gateways map[
 	}
 	cb := gobreaker.NewCircuitBreaker(settings)
 
-	return &TransactionService{Repo: repo, Gateways: gateways, cb: cb}
+	return &TransactionService{Repo: repo, UserRepo: userRepo, Gateways: gateways, cb: cb}
 }

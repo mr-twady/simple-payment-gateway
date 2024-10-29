@@ -11,7 +11,7 @@ import (
 // Migrate will create the necessary tables and seed initial data
 func Migrate(db *gorm.DB) error {
 	// Migrate the schema
-	if err := db.AutoMigrate(&models.Transaction{}); err != nil {
+	if err := db.AutoMigrate(&models.User{}, &models.Transaction{}); err != nil {
 		return err
 	}
 
@@ -37,6 +37,31 @@ func seedData(db *gorm.DB) error {
 
 		if err := db.Create(&initialTransactions).Error; err != nil {
 			return err
+		}
+	}
+
+	var users []models.User
+	if err := db.Find(&transactions).Error; err != nil {
+		return err
+	}
+
+	// Only seed users if the table is empty
+	if len(users) == 0 {
+		initialUsers := []models.User{
+			{Name: "Dunsin Tester", Email: "test@test.com", Balance: 500.0, Address: "Dubai"},
+		}
+
+		// Check for existing user by email before inserting
+		for _, user := range initialUsers {
+			var existingUser models.User
+			if err := db.Where("email = ?", user.Email).First(&existingUser).Error; err != nil {
+				// If no user exists, create the new user
+				if err == gorm.ErrRecordNotFound {
+					if err := db.Create(&user).Error; err != nil {
+						return err
+					}
+				}
+			}
 		}
 	}
 
