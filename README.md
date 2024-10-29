@@ -73,12 +73,12 @@ These instructions will help you set up the project locally for development and 
     ```
     go get # cd into main if doesnt work from root dir
 
-7. **On application start up, I added a simple migration to set up the Database and run any necessary migrations. Ensure your database connection details in .env are correct.**
-
-8. **Run the Application Start the server using:**
+7. **Run the Application Start the server using:**
     ```
     go run main/main.go # if you are in root dir and run
     go run main.go # if you are in main dir 
+
+8. **On application start up, I added a simple migration to set up the Database and run any necessary migrations. Ensure your database connection details in .env are correct.**
 
 9. **For API reference, kindly refer to your /docs of your base server URL. A list of API Endpoints and details are explained there**
     ```
