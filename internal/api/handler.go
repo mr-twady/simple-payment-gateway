@@ -38,7 +38,7 @@ func (h *Handler) InitiateDepositHandler(w http.ResponseWriter, r *http.Request)
 func (h *Handler) VerifyDepositHandler(w http.ResponseWriter, r *http.Request) {
 	response := map[string]string{"message": "Deposit verified!"}
 
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
 }
 
@@ -52,6 +52,6 @@ func (h *Handler) WithdrawalHandler(w http.ResponseWriter, r *http.Request) {
 func (h *Handler) CallbackHandler(w http.ResponseWriter, r *http.Request) {
 	response := map[string]string{"message": "callback handled!"}
 
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
 }
