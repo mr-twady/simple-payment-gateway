@@ -28,7 +28,7 @@ The Payment Gateway Microservice is a robust, extensible service designed to han
 These instructions will help you set up the project locally for development and testing.
 
 ### Requirements
-- Go 1.20 or higher
+- Go 1.23 or higher
 - PostgreSQL (or any supported database)
 - Docker (optional but recommended, for containerization) and quick setup
 - Docker Compose (optional, for local development)
