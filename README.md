@@ -2,7 +2,8 @@
 
 ## About
 My solution to the Exinity Senior Backend Assessment.
-Design Document here - https://drive.google.com/file/d/1nTShZ-u7fzEhxksK9p2Ttzse5KWoIfBU/view?usp=sharing
+
+Design Document and architecture diagram here - https://drive.google.com/file/d/1nTShZ-u7fzEhxksK9p2Ttzse5KWoIfBU/view?usp=sharing
 
 ## Overview
 The Payment Service is a microservice designed to handle payment transactions through multiple payment gateways. It provides endpoints for deposit and withdrawal operations, along with a callback mechanism to handle updates from payment gateways. Additionally, I implemented a simple health check endpoint and an endpoint to retrieve the updated user balance upon a successful deposit and withdrawal operation.
@@ -50,32 +51,32 @@ These instructions will help you set up the project locally for development and 
     GATEWAY_B_URL=http://payment.gateway-b.com
     TIMEOUT=
 
-2. **Once that is done, if you intend to use Docker to run this application, just run.**
+2. **Initialize Go Modules If you haven't already:**
+    ```
+    go mod init dunsin-olubobokun/simple-payment-gateway #from your root directory
+
+3. **Once that is done, if you intend to use Docker to run this application, just run the following commands.**
     ```
     docker-compose build --no-cache
     docker-compose up 
     ```
-    - **If this was well setup, you should be able to hit http://localhost:8080/health**
+    - **If all was well setup, you should be able to hit http://localhost:8080/health**
 
-3. **If you want to run this application manually, update line 16 in internal/config/config.go as follows**
+4. **If you want to run this application manually, update line 16 in internal/config/config.go as follows**
     ```internal/config/config.go
     viper.SetConfigFile(".env") // update from
     viper.SetConfigFile("../.env") // update to
 
-4. **Initialize Go Modules If you haven't already, initialize your Go modules:**
-    ```
-    cd main # cd into main directory 
-    go mod init dunsin-olubobokun/simple-payment-gateway
-
 5. **Install Dependencies Use the following command to install the necessary dependencies:**
     ```
-    go get 
+    go get # cd into main if doesnt work from root dir
 
 7. **On application start up, I added a simple migration to set up the Database and run any necessary migrations. Ensure your database connection details in .env are correct.**
 
 8. **Run the Application Start the server using:**
     ```
-    go run cmd/main.go
+    go run main/main.go # if you are in root dir and run
+    go run main.go # if you are in main dir 
 
 9. **For API reference, kindly refer to your /docs of your base server URL. A list of API Endpoints and details are explained there**
     ```
