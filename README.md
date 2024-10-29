@@ -191,7 +191,6 @@ dunsin-olubobokun/simple-payment-gateway/
             }
    
 # Testing
-    ```
     go test ./tests # from root dir
 
 
