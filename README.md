@@ -104,11 +104,10 @@ dunsin-olubobokun/simple-payment-gateway/
     - Health check 
     - GET /health
         - Response body
-        ```
-           {
-                "message": "Payment service is up and running!"
-            }
-        ```
+        {
+            "message": "Payment service is up and running!"
+        }
+    
 
 
     - Deposit Funds (Initiate)
