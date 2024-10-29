@@ -28,6 +28,10 @@ func (h *Handler) HealthCheck(w http.ResponseWriter, r *http.Request) {
 
 // test that all services are up
 func (h *Handler) InitiateDepositHandler(w http.ResponseWriter, r *http.Request) {
+	req, err := ValidateTransactionRequest(w, r)
+	if req == nil || err != nil {
+		return
+	}
 
 	response := map[string]string{"message": "Deposit initiated!"}
 

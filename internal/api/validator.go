@@ -20,5 +20,28 @@ func ValidateTransactionRequest(w http.ResponseWriter, r *http.Request) (*models
 		return nil, err
 	}
 
+	if req.Type == "deposit" || req.Type == "withdrawal" {
+		if req.Email == "" {
+			http.Error(w, "Email is required", http.StatusBadRequest)
+			return nil, nil
+		}
+		if req.CustomerReference == "" {
+			http.Error(w, "Customer reference is required", http.StatusBadRequest)
+			return nil, nil
+		}
+		if req.Type == "" {
+			http.Error(w, "Transaction type is required", http.StatusBadRequest)
+			return nil, nil
+		}
+		if req.Amount <= 0 {
+			http.Error(w, "Amount must be greater than zero", http.StatusBadRequest)
+			return nil, nil
+		}
+		if req.Currency == "" {
+			http.Error(w, "currency is required", http.StatusBadRequest)
+			return nil, nil
+		}
+	}
+
 	return &req, nil
 }
