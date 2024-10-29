@@ -44,11 +44,12 @@ These instructions will help you set up the project locally for development and 
 
 2. **Create a .env file from .env.example file in the root directory to store your environment variables. Example:**
     ```
-    DB_URL=postgres://user:password@localhost:5432/dbname?sslmode=disable
+    #DB_URL=postgres://user:password@localhost:5432/<db_name>?sslmode=disable #for running manually (i.e not with Docker), update with correct creds
+    DB_URL=postgres://dunsinolubobokun:password@db:5432/test_work?sslmode=disable  #for running with Docker, update with correct creds
     HTTP_PORT=8080
     GATEWAY_A_URL=http://payment.gateway-a.com
     GATEWAY_B_URL=http://payment.gateway-b.com
-    TIMEOUT=
+    TIMEOUT=6000
 
 2. **Initialize Go Modules If you haven't already:**
     ```
