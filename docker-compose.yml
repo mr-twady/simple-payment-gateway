@@ -6,8 +6,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      DB_URL: postgres://dunsinolubobokun:password@db:5432/test_work?sslmode=disable
-      # DB_URL: "${POSTGRES_DB_URL}"  # Connect to the db service
+      DB_URL: "${DB_URL}"  # Connect to the db service
       HTTP_PORT: ${HTTP_PORT}
       GATEWAY_A_URL: "${GATEWAY_A_URL}"  
       GATEWAY_B_URL: "${GATEWAY_B_URL}"  
