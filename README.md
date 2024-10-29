@@ -13,6 +13,7 @@ The Payment Gateway Microservice is a robust, extensible service designed to han
 - InitiateDeposit and verify deposits and withdrawals.
 - Handle asynchronous callbacks for transaction updates from payment gateways.
 - Support for multiple payment gateways with minimal changes to the codebase.
+- Retrieve the updated user balance upon a successful deposit and withdrawal operation.
 - Resilience strategies including circuit breakers, retries, and timeouts for gateway failures.
 - Comprehensive error handling and meaningful HTTP status codes.
 
