@@ -62,7 +62,7 @@ These instructions will help you set up the project locally for development and 
     ```
     - **If all was well setup, you should be able to hit http://localhost:8080/health**
 
-4. **If you want to run this application manually, update line 16 in internal/config/config.go as follows**
+4. **If you want to run this application manually i.e without using Docker, update line 16 in internal/config/config.go as follows**
     ```internal/config/config.go
     viper.SetConfigFile(".env") // update from
     viper.SetConfigFile("../.env") // update to
