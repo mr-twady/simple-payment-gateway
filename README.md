@@ -82,7 +82,7 @@ These instructions will help you set up the project locally for development and 
     http://localhost:8080/docs
 
 10. **Example API usage**
-    - Deposit Funds (Inittiate)
+    - Deposit Funds (Initiate)
     - POST /api/deposit
         - Request body
         ```
@@ -106,7 +106,7 @@ These instructions will help you set up the project locally for development and 
             }
         ```
 
-    - Deposit Funds (Inittiate)
+    - Deposit Funds (Initiate)
     - POST /api/deposit
         - Request body
         ```
@@ -171,6 +171,21 @@ These instructions will help you set up the project locally for development and 
                 "status": "completed",
                 "customer_reference": "dsdsds999zsds",
                 "email": "test@test.com"
+            }
+        ```
+
+    - Get user balance  
+    - GET /api/user/balance?email=
+        - Request param
+        ```
+            {
+                "email": "test@test.com"
+            }
+        ```
+        - Response body
+        ```
+            {
+                "balance":500
             }
         ```
    
