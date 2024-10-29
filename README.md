@@ -37,10 +37,10 @@ These instructions will help you set up the project locally for development and 
 
 ## Setup Instructions
 
-1. **Clone the Repository**
+1. **Clone the repository and change directory to the cloned project**
    ```
-   git clone https://github.com/yourusername/dunsin-olubobokun/simple-payment-gateway.git
-   cd dunsin-olubobokun/simple-payment-gateway
+   git clone https://github.com/mr-twady/simple-payment-gateway.git
+   cd simple-payment-gateway
 
 
 2. **Create a .env file from .env.example file in the root directory to store your environment variables. Example:**
