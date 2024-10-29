@@ -13,7 +13,7 @@ type Config struct {
 }
 
 func LoadConfig() (*Config, error) {
-	viper.SetConfigFile("../.env")
+	viper.SetConfigFile(".env")
 	if err := viper.ReadInConfig(); err != nil {
 		return nil, err
 	}
