@@ -47,6 +47,11 @@ func (h *Handler) VerifyDepositHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) WithdrawalHandler(w http.ResponseWriter, r *http.Request) {
+	req, err := ValidateTransactionRequest(w, r)
+	if req == nil || err != nil {
+		return
+	}
+
 	response := map[string]string{"message": "withdrwala processed!"}
 
 	w.WriteHeader(http.StatusCreated)
