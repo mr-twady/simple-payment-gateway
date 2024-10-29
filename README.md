@@ -58,8 +58,9 @@ These instructions will help you set up the project locally for development and 
 
 3. **Once that is done, if you intend to use Docker to run this application, just run the following commands.**
     ```
-    docker-compose build --no-cache
-    docker-compose up 
+    docker-compose up --build
+    # or docker-compose build --no-cache
+    # and docker-compose up 
     ```
     - **If all was well setup, you should be able to hit http://localhost:8080/health**
 
