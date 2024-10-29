@@ -20,10 +20,9 @@ The Payment Gateway Microservice is a robust, extensible service designed to han
 - [Getting Started](#getting-started)
 - [Requirements](#requirements)
 - [Setup Instructions](#setup-instructions)
+- [Directory Structure](#directory-structure)
 - [Usage](#usage)
 - [Testing](#testing)
-- [Directory Structure](#directory-structure)
-- [License](#license)
 
 ## Getting Started
 These instructions will help you set up the project locally for development and testing.
@@ -82,7 +81,25 @@ These instructions will help you set up the project locally for development and 
     ```
     http://localhost:8080/docs
 
-10. **Example API usage**
+# Directory Structure
+High level overview of project structure
+
+dunsin-olubobokun/simple-payment-gateway/
+├── main/                    # Main entry point for the application
+├── internal/                # Internal application logic
+│   ├── api/                 # API handlers
+│   ├── config/              # Configuration management
+│   ├── gateways/            # Mock Payment gateway integrations
+│   ├── models/              # Data models
+│   ├── migrations/          # Database migrations 
+│   ├── repository/          # Database interactions
+│   ├── service/             # Business logic
+│   ├── middleware/          # Middleware functions
+│   └── utils/               # Utility functions such as
+└── tests/                   # Unit tests
+
+
+## Usage 
     - Health check 
     - GET /health
         - Response body
@@ -192,5 +209,8 @@ These instructions will help you set up the project locally for development and 
             }
         ```
    
+# Testing
+    ```
+    go test ./tests # from root dir
 
 
